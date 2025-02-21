@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["BBMVC"] = "Index";
+}
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+
+
+<div class="text-center">
+    <h1 class="display-4">Blood Bowl</h1>
+</div>
+
+    <button id="RosterDrop">Teams</button>
+    <div id="DropdownMenu" class="DropContent">
+        <a href="#">Human</a>
+        <a href="#">Orc</a>
+        <a href="#">Dark elf</a>
+        <a href="#">Dwarf</a>
+        <a href="#">Elven union</a>
+        <a href="#">Nurgle</a>
+        <a href="#">High elf</a>
+        <a href="#">Skaven</a>
+        <a href="#">Wood elf</a>
+        <a href="#">Goblin</a>
+        <a href="#">Underworld denizen</a>
+        <a href="#">Chaos renegade</a>
+    </div>
+
+    @* Här kommer listan med stats dyka upp *@
+    <div id="rosterTable"></div>
+    <img id="racepic" src=""/>
+
+@section Scripts 
+{
+    <script src="~/js/home.js" asp-append-version="true"></script>
+}
+
+

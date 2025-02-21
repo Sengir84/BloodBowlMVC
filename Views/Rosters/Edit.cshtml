@@ -1,0 +1,64 @@
+﻿@model BloodBowlMVC.Models.Roster
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Roster</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RosterIdPk" />
+            <div class="form-group">
+                <label asp-for="RosterRace" class="control-label"></label>
+                <input asp-for="RosterRace" class="form-control" />
+                <span asp-validation-for="RosterRace" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RosterPosition" class="control-label"></label>
+                <input asp-for="RosterPosition" class="form-control" />
+                <span asp-validation-for="RosterPosition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RosterCost" class="control-label"></label>
+                <input asp-for="RosterCost" class="form-control" />
+                <span asp-validation-for="RosterCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RosterMovement" class="control-label"></label>
+                <input asp-for="RosterMovement" class="form-control" />
+                <span asp-validation-for="RosterMovement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RosterStrength" class="control-label"></label>
+                <input asp-for="RosterStrength" class="form-control" />
+                <span asp-validation-for="RosterStrength" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RosterAgility" class="control-label"></label>
+                <input asp-for="RosterAgility" class="form-control" />
+                <span asp-validation-for="RosterAgility" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RosterArmor" class="control-label"></label>
+                <input asp-for="RosterArmor" class="form-control" />
+                <span asp-validation-for="RosterArmor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

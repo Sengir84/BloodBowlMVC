@@ -1,0 +1,60 @@
+﻿@model BloodBowlMVC.Models.Roster
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Roster</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RosterRace)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RosterRace)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RosterPosition)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RosterPosition)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RosterCost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RosterCost)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RosterMovement)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RosterMovement)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RosterStrength)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RosterStrength)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RosterAgility)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RosterAgility)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RosterArmor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RosterArmor)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.RosterIdPk">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

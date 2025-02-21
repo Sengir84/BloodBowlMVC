@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BloodBowlMVC.Models.Roster>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RosterRace)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RosterPosition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RosterCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RosterMovement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RosterStrength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RosterAgility)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RosterArmor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RosterRace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RosterPosition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RosterCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RosterMovement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RosterStrength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RosterAgility)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RosterArmor)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RosterIdPk">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RosterIdPk">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RosterIdPk">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
