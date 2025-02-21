@@ -23,23 +23,56 @@
 
                 let stats = await response.json();
 
-                document.getElementById("rosterTable").innerHTML = `
-                    <table border="1">
-                        <tr><th>Position</th><th>COST</th><th>MOV</th><th>STR</th><th>AGI</th><th>AV</th><th>Skills</th></tr>
-                        ${stats.map(player => `
-                            <tr>
-                                <td>${player.rosterPosition}</td>
-                                <td>${player.rosterCost}</td>
-                                <td>${player.rosterMovement}</td>
-                                <td>${player.rosterStrength}</td>
-                                <td>${player.rosterAgility}</td>
-                                <td>${player.rosterArmor}</td>
-                                <td>${player.skills?.join(", ") || "No Skills"}</td>
-                            </tr>
-                        `).join('')}
-                    </table>`;
-            
-                    //Försök att få in en bild
+                let rosterTable = document.getElementById("rosterTable");
+                rosterTable.innerHTML = ""; //Rensar tabellen
+
+                //Skapa tabell
+                let table = document.createElement("table");
+                table.setAttribute("border", "1");
+
+                //Tabellhuvud
+                let thead = document.createElement("thead");
+                let headerRow = document.createElement("tr");
+                let headers = ["Position", "COST", "MOV", "STR", "AGI", "AV", "Skills"];
+
+                headers.forEach(headerText => {
+                    let th = document.createElement("th");
+                    th.textContent = headerText;
+                    headerRow.appendChild(th);
+                });
+
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+
+                //Tabellkropp
+                let tbody = document.createElement("tbody");
+
+                stats.forEach(player => {
+                    let row = document.createElement("tr");
+
+                    let values = [
+                        player.rosterPosition,
+                        player.rosterCost,
+                        player.rosterMovement,
+                        player.rosterStrength,
+                        player.rosterAgility,
+                        player.rosterArmor,
+                        player.skills?.join(", ") || "No Skills"];
+
+                    values.forEach(value => {
+                        let td = document.createElement("td");
+                        td.textContent = value;
+                        row.appendChild(td);
+                    });
+
+                    tbody.appendChild(row);
+                });
+
+                table.appendChild(tbody);
+                rosterTable.appendChild(table);
+
+
+                    //ild
                 const raceImage = `/img/${rosterRace}.png`;
                 document.getElementById("racepic").src = raceImage;
 
@@ -47,7 +80,11 @@
             }
             catch (error) {
                 console.error("Error fetching roster data:", error);
-                document.getElementById("rosterTable").innerHTML = `<p>Error loading roster data.</p>`;
+
+                let errorMessage = document.createElement("p");
+                errorMessage.textContent = "Error loading roster data.";
+                document.getElementById("rosterTable").innerHTML = ""; // Rensa befintligt innehåll
+                document.getElementById("rosterTable").appendChild(errorMessage);
             }
         }
     });
