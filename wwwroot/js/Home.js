@@ -72,7 +72,7 @@
                 rosterTable.appendChild(table);
 
 
-                    //ild
+                //Bild
                 const raceImage = `/img/${rosterRace}.png`;
                 document.getElementById("racepic").src = raceImage;
 

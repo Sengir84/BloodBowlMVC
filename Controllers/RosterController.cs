@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BloodBowlMVC.Controllers
 {
-    public class HomeController : Controller
+    public class RosterController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<RosterController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public RosterController(ILogger<RosterController> logger)
         {
             _logger = logger;
         }
