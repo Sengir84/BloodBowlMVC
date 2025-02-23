@@ -26,6 +26,11 @@
                 let rosterTable = document.getElementById("rosterTable");
                 rosterTable.innerHTML = ""; //Rensar tabellen
 
+                //Skapa spelardropdown
+                let playerDropdown = document.getElementById("playerDropDown");
+                playerDropdown.innerHTML = '<option value="">Select player</option>'; //Rensar spelarlistan'
+                playerDropDown.disabled = true;
+
                 //Skapa tabell
                 let table = document.createElement("table");
                 table.setAttribute("border", "1");
@@ -66,10 +71,21 @@
                     });
 
                     tbody.appendChild(row);
+
+                    //Fyll spelardropdown
+                    let option = document.createElement("option");
+                    option.value = player.rosterIdPk;
+                    option.textContent = `${player.rosterPosition} - ${player.rosterCost} GP`;
+                    playerDropdown.appendChild(option);
                 });
 
                 table.appendChild(tbody);
                 rosterTable.appendChild(table);
+
+                //Aktivera spelardropdown om det finns spelare
+                if (stats.length > 0) {
+                    playerDropdown.disabled = false;
+                }
 
 
                 //Bild

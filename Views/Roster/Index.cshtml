@@ -5,7 +5,7 @@
 
 
 <div class="text-center">
-    <h1 class="display-4">Blood Bowl</h1>
+    <h1 class="display-4">Team Builder</h1>
 </div>
 
     <button id="RosterDrop">Teams</button>
@@ -27,6 +27,13 @@
     @* Här kommer listan med stats dyka upp *@
     <div id="rosterTable"></div>
     <img id="racepic" src=""/>
+
+    @* Dropdown för spelare *@
+    <select id="playerDropDown" disabled>
+    <option value="">Select player</option>
+    </select>
+    <button id="BuyPlayer" disabled>Buy player</button>
+     
 
 @section Scripts 
 {
