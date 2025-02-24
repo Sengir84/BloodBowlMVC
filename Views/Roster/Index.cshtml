@@ -24,15 +24,42 @@
         <a href="#">Chaos renegade</a>
     </div>
 
-    @* Här kommer listan med stats dyka upp *@
+@* Här kommer listan med stats dyka upp *@
     <div id="rosterTable"></div>
-    <img id="racepic" src=""/>
 
-    @* Dropdown för spelare *@
-    <select id="playerDropDown" disabled>
+
+
+<div id="playerSelection"></div>
+
+<button id="buyTeamButton">Buy team </button>
+
+<table id="selectedPlayersTable" border="1">
+    <thead>
+        <tr>
+            <th>Player</th>
+            <th>Cost</th>
+            <th>Position</th>
+            <th>Move</th>
+            <th>Strength</th>
+            <th>Agility</th>
+            <th>Armor</th>
+            <th>Skills</th>
+        </tr>
+      </thead>
+      <tbody>
+        @* Here will the selected players be shown *@
+      </tbody>
+    </table>
+
+@* Select för spelare 
+<select id="playerDropDown" disabled>
     <option value="">Select player</option>
-    </select>
-    <button id="BuyPlayer" disabled>Buy player</button>
+</select>
+<button id="BuyPlayer" disabled>Add player</button>*@
+<img id="racepic" src="" alt="Team Image" />
+
+
+    
      
 
 @section Scripts 
