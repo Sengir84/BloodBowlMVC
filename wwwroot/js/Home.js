@@ -8,6 +8,58 @@
 
     let rosterData = []; // Array för att lagra spelarinformation
 
+    function generateRosterTable(rosterData) {
+        let rosterTable = document.getElementById("rosterTable");
+        rosterTable.innerHTML = ""; // Clear old table
+
+        let table = document.createElement("table");
+        table.setAttribute("border", "1");
+
+        // Create table headers
+        let thead = document.createElement("thead");
+        let headerRow = document.createElement("tr");
+        let headers = ["Position", "COST", "MOV", "STR", "AGI", "AV", "Skills"];
+
+        headers.forEach(headerText => {
+            let th = document.createElement("th");
+            th.textContent = headerText;
+            headerRow.appendChild(th);
+        });
+
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        // Create table body
+        let tbody = document.createElement("tbody");
+
+        rosterData.forEach(player => {
+            let row = document.createElement("tr");
+
+            let values = [
+                player.rosterPosition,
+                player.rosterCost,
+                player.rosterMovement,
+                player.rosterStrength,
+                player.rosterAgility,
+                player.rosterArmor,
+                player.skills?.join(", ") || "No Skills"
+            ];
+
+            values.forEach(value => {
+                let td = document.createElement("td");
+                td.textContent = value;
+                row.appendChild(td);
+            });
+
+            tbody.appendChild(row);
+        });
+
+        table.appendChild(tbody);
+        rosterTable.appendChild(table);
+
+        console.log("Table appended successfully!"); // Debugging
+    }
+
     function generatePlayerDropdowns() {
         playerSelection.innerHTML = ""; // Rensa befintligt innehåll
 
@@ -51,6 +103,8 @@
         if (event.target.tagName === "A") {   //hämtar namnet på laget från länken
             let rosterRace = event.target.innerText.trim();
 
+            console.log("Selected race:", rosterRace);
+
             const raceImage = `/img/${rosterRace}.png`;
             document.getElementById("racepic").src = raceImage;
 
@@ -61,7 +115,12 @@
 
                 rosterData = await response.json();
 
+                console.log("Roster Data:", rosterData);
+
                 generatePlayerDropdowns();//Genererar spelardropdowns
+
+                generateRosterTable(rosterData);//Genererar tabell med spelarinformation
+                
                 
             }
             catch (error) {
@@ -164,20 +223,12 @@
         });
 
         table.appendChild(tbody);
-        rosterTable.appendChild(table);
-
+        /*rosterTable.appendChild(table);*/
+        document.getElementById("rosterTable").innerHTML = "";
+        document.getElementById("rosterTable").appendChild(table);
         //Aktivera spelardropdown om det finns spelare
         if (rosterData.length > 0) {
             playerDropdown.disabled = false;
         }
-
-
-        ////Bild
-        //console.log("FUNKAR");
-        //const raceImage = `/img/${rosterRace}.png`;
-        //document.getElementById("racepic").src = raceImage;
-        
-
-        
     });
 });
